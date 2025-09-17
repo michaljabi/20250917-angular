@@ -45,5 +45,6 @@ export class MainMenuComponent implements OnInit, OnDestroy {
     if (windowW > 992) {
       this.isMenuShown = false;
     }
+    // console.log(this);
   };
 }

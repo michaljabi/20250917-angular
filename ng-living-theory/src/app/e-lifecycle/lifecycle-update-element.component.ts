@@ -23,6 +23,7 @@ export class LifecycleUpdateElementComponent
   secretCode = input('');
   previousSecretCode = '';
   order = 0;
+  intervalId = 0;
 
   constructor() {
     this.logOrder('constructor');
@@ -34,6 +35,12 @@ export class LifecycleUpdateElementComponent
 
   ngOnInit(): void {
     this.logOrder('ngOnInit');
+    this.intervalId = window.setInterval(() => {
+      console.log('HELLO !');
+    }, 2000);
+    // setTimeout(() => {
+    //   clearInterval(id);
+    // }, 4000);
   }
 
   ngDoCheck(): void {
@@ -52,5 +59,6 @@ export class LifecycleUpdateElementComponent
 
   ngOnDestroy(): void {
     this.logOrder('ngOnDestroy');
+    window.clearInterval(this.intervalId);
   }
 }
