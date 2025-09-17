@@ -26,6 +26,11 @@ import { Component } from '@angular/core';
       </ul>
       <div class="box">
         <div [title]="myTitle">Najedź na mnie aby zobaczyć tooltip !</div>
+        <div [title]="10 + 20 + ' ' + myTitle">
+          Najedź na mnie aby zobaczyć tooltip !
+        </div>
+        <div title="myTitle">Najedź na mnie aby zobaczyć tooltip !</div>
+        <div title="{{ 50 + 60 }}">Najedź na mnie aby zobaczyć tooltip !</div>
       </div>
       <div class="box">
         <div class="mb-3">
