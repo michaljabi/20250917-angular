@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MenuComponent } from './menu.component';
+import { HelloWorld } from './hello-world/hello-world';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, MenuComponent],
+  imports: [RouterOutlet, MenuComponent, HelloWorld],
   template: `
     <main class="container mb-5">
       <header class="hero is-info">
@@ -16,6 +17,13 @@ import { MenuComponent } from './menu.component';
           <h4 class="subtitle">sprawdź jak działa {{ title }}!...</h4>
         </div>
       </header>
+      <app-hello-world />
+      <app-hello-world />
+      <app-hello-world />
+      <app-hello-world />
+      <app-hello-world />
+      <app-hello-world />
+      <app-hello-world />
       <section class="columns mt-5">
         <app-menu></app-menu>
         <div class="column is-9 content">
