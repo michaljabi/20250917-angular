@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-main-menu',
@@ -25,6 +25,25 @@ import { Component } from '@angular/core';
   `,
   styles: ``,
 })
-export class MainMenuComponent {
+export class MainMenuComponent implements OnInit, OnDestroy {
   isMenuShown = false;
+
+  ngOnInit(): void {
+    console.log('MainMenuComponent created!');
+    window.addEventListener('resize', this.onResize);
+  }
+
+  // Do tematu "czyszczenia" aby nie mieć "memory leak" jeszcze wrócimy i wtedy te zapisy będa "bardziej zrozumiałe".
+  ngOnDestroy(): void {
+    window.removeEventListener('resize', this.onResize);
+  }
+
+  // tutaj musimy w ten sposób, ponieważ potrzebujemy referencji do tej konkretnej funkcji (metody) ale pisząc ją jako metodę, widow.addEventListener - zmieni kontekst
+  onResize = (ev: Event) => {
+    /// ev.target etc.
+    const windowW = (ev.target as Window).innerWidth;
+    if (windowW > 992) {
+      this.isMenuShown = false;
+    }
+  };
 }
