@@ -23,8 +23,8 @@ interface Fruit {
 
     <div class="panel is-info">
       <p class="panel-heading ">Kosz z owocami...</p>
-      @for (fruit of fruits; track fruit.name) {
-        <div class="panel-block">{{ fruit.amount }} - {{ fruit.name }}</div>
+      @for (fruitzz of fruits; track fruitzz.name) {
+        <div class="panel-block">{{ fruitzz.amount }} - {{ fruitzz.name }}</div>
       }
     </div>
   `,

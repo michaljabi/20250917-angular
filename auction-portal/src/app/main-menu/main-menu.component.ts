@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MenuItem } from './MenuItem';
 
 @Component({
   selector: 'app-main-menu',
@@ -10,15 +11,11 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
       </button>
       <div class="collapse navbar-collapse" [class.show]="isMenuShown">
         <ul class="navbar-nav">
+          @for(item of items; track item.title) {
           <li class="nav-item">
-            <a class="nav-link" href="auctions">Aukcje</a>
+            <a class="nav-link" [href]="item.href">{{ item.title }}</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="promotions">Promocje</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="advices">Podpowiadamy</a>
-          </li>
+          } @empty { no items 😭 }
         </ul>
       </div>
     </nav>
@@ -27,6 +24,12 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 })
 export class MainMenuComponent implements OnInit, OnDestroy {
   isMenuShown = false;
+
+  items: MenuItem[] = [
+    { href: '/auctions', title: 'Aukcje' },
+    { href: '/promotions', title: 'Promocje' },
+    { href: '/advices', title: 'Podpowiadamy' },
+  ];
 
   ngOnInit(): void {
     console.log('MainMenuComponent created!');
