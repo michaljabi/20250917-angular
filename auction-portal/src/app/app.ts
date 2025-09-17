@@ -1,13 +1,20 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from "./header/header.component";
+import { HeaderComponent } from './header/header.component';
 
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, HeaderComponent],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {
-  protected readonly title = signal('auction-portal');
+  protected readonly title = signal('TESTOWY');
+
+  constructor() {
+    setTimeout(() => {
+      // this.title.set('?');
+      this.title.update((text) => text + '?');
+    }, 3000);
+  }
 }
