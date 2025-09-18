@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MenuItem } from './MenuItem';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-main-menu',
-  imports: [],
+  imports: [RouterLink],
   template: `
     <nav class="navbar navbar-expand-lg navbar-light bg-light px-3 mb-3">
       <button class="navbar-toggler" type="button" (click)="isMenuShown = !isMenuShown">
@@ -13,7 +14,7 @@ import { MenuItem } from './MenuItem';
         <ul class="navbar-nav">
           @for(item of items; track item.title) {
           <li class="nav-item">
-            <a class="nav-link" [href]="item.href">{{ item.title }}</a>
+            <a class="nav-link" [routerLink]="item.href">{{ item.title }}</a>
           </li>
           } @empty { no items 😭 }
         </ul>

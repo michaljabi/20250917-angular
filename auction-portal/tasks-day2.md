@@ -52,3 +52,17 @@ Pomocny link:
 ```
 
 2. Ustal `interface` dla auckji i umieść ten `interface` w osobnym pliku
+
+## Zadanie 10:
+
+1. przenieś tablicę routingu dla  `promotions`  i  `auctions`  do osobnego pliku  `auctions.routes.ts`  w katalogu  auctions 
+
+
+## Zadanie 11 - naprawa linków w `main-menu`
+
+1. Użyj dyrektywy `routerLink` w elementach `<a>` w menu
+2. sprawdź czy strona się nie odżwieża po przechodzeniu po linkach
+
+Pomocny link:
+
+- https://angular.dev/api/router/RouterLink#usage-notes
