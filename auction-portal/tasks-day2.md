@@ -66,3 +66,10 @@ Pomocny link:
 Pomocny link:
 
 - https://angular.dev/api/router/RouterLink#usage-notes
+
+## Zadanie 12 - instalacja `json-server`
+
+1. zainstaluj w projekcie z flagą `-D` (wpadnie do devDependencies) bibliotekę: [json-server](https://www.npmjs.com/package/json-server)
+2. dodaj skrypt do uruchamiania serwera API (fikcyjnego) z danymi z pliku `db-data.json`:
+3. plik utwórz od zera (w katalogu głównym projektu) i dodaj do niego dane z zadania `9.`
+4. upewnij się, że serwer działa poprawnie i na adresie `http://localhost:3000/auctions` wyświetla aukcje w formacie `JSON`
