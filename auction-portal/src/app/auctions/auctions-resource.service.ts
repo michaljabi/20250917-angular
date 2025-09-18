@@ -2,13 +2,14 @@ import { inject, Injectable } from '@angular/core';
 import { AuctionItem } from './auction-item';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuctionsResourceService {
   private httpClient = inject(HttpClient);
-  private baseEndpoint = `http://localhost:3000/auctions`;
+  private baseEndpoint = `${environment.baseURL}/auctions`;
 
   getAll(): Observable<AuctionItem[]> {
     // GET...
