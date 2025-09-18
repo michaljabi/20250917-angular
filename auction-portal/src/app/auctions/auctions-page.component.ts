@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { AuctionItem } from './auction-item';
 import { JsonPipe, UpperCasePipe, LowerCasePipe, CurrencyPipe } from '@angular/common';
 import { AuctionCardComponent } from './auction-card.component';
+import { AuctionsResourceService } from './auctions-resource.service';
 
 @Component({
   imports: [JsonPipe, UpperCasePipe, LowerCasePipe, CurrencyPipe, AuctionCardComponent],
@@ -27,21 +28,14 @@ import { AuctionCardComponent } from './auction-card.component';
   `,
   styles: ``,
 })
-export class AuctionsPageComponent {
-  auctions: AuctionItem[] = [
-    {
-      id: '1',
-      title: 'Części do aparatu',
-      imgUrl: 'https://picsum.photos/id/36/600/600',
-      description: 'Jakiś opis',
-      price: 2000,
-    },
-    {
-      id: '2',
-      title: 'Mac Book',
-      imgUrl: 'https://picsum.photos/id/48/600/600',
-      description: 'Używany - ale sprawny',
-      price: 4000,
-    },
-  ];
+export class AuctionsPageComponent implements OnInit {
+  auctions: AuctionItem[] = [];
+
+  private readonly aucionsResourceService = inject(AuctionsResourceService);
+
+  ngOnInit(): void {
+    this.aucionsResourceService.getAll().subscribe((auctions: AuctionItem[]) => {
+      this.auctions = auctions;
+    });
+  }
 }
