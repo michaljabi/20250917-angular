@@ -15,10 +15,13 @@ import { AuctionsResourceService } from './auctions-resource.service';
         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
           <app-auction-card [auction]="a" />
         </div>
-        } @empty {
-        <div class="alert alert-info">Nie ma jeszcze aukcji....</div>
+        } @empty { @if(isLoading) {
+        <div class="alert alert-info">Ładowanie....</div>
+        } @else if(errorMessage) {
         <div class="alert alert-danger">{{ errorMessage }}</div>
-        }
+        } @else {
+        <div class="alert alert-warn">Nie mamy jeszcze aukcji....</div>
+        } }
       </div>
       <div class="my-4">
         {{ 200 | currency : 'USD' }}
@@ -31,27 +34,38 @@ import { AuctionsResourceService } from './auctions-resource.service';
 })
 export class AuctionsPageComponent implements OnInit {
   auctions: AuctionItem[] = [];
+  isLoading = false;
   errorMessage = '';
 
   private readonly aucionsResourceService = inject(AuctionsResourceService);
 
   ngOnInit(): void {
+    this.loadAuctions();
+  }
+
+  loadAuctions() {
     // Rozwiązanie "poprawne", ale obsługujemy tylko HAPPY PATH !!!!
     // this.aucionsResourceService.getAll().subscribe((auctions: AuctionItem[]) => {
     //   this.auctions = auctions;
     // });
-
+    this.isLoading = true;
+    this.errorMessage = '';
     this.aucionsResourceService.getAll().subscribe({
       next: (auctions: AuctionItem[]) => {
         this.auctions = auctions;
+        this.isLoading = false;
+        console.log(auctions);
       },
       error: (err: Error) => {
         console.error(err);
-        this.errorMessage = err.message;
+        this.errorMessage = 'Nie udało się pobrać aukcji...';
+        this.isLoading = false;
       },
-      complete: () => {
-        console.log('Completed !');
-      },
+      // complete: () => {
+      //   console.log('Completed !');
+      // },
     });
+
+    // this.aucionsResourceService.getAll()
   }
 }

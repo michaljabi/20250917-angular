@@ -114,3 +114,16 @@ Pomocny link:
 2. przygotuj dedykowane metody: `getAll` oraz `addOne` - na razie bez implementacji
 3. Mają one zwracać `AuctionItem[]` oraz dodawać jedną `AuctionItem`
    - docelowo zastosujemy tam `httpClient` ale teraz - możesz zrobić "wydmuszki" tych metod i przygotować ich kształt
+
+
+
+## zadanie 15 - obsługa błędu pobierania danych i stan - `loading`
+
+1. W komponencie wyświetlającym aukcje przygotuj odpowiedni kod, umożliwiający:
+2. Pokazanie preloadera w trakcie łądowania aukcji
+3. Pokazanie `errorMessage` jeśli nie udało się ich pobrać
+4. Uzyj do tego kodu HTML:
+```html
+ <div class="alert alert-info">Ładowanie aukcji....</div>
+ <div class="alert alert-danger">{{ errorMessage }}</div>
+ ```

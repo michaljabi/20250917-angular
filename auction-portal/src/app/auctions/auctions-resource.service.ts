@@ -21,5 +21,6 @@ export class AuctionsResourceService {
 
   addOne(auction: AuctionItem) {
     // POST...
+    return this.httpClient.post<AuctionItem>(this.baseEndpoint, auction);
   }
 }
