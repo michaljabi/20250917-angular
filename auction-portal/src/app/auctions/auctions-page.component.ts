@@ -1,8 +1,9 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { AuctionItem } from './auction-item';
 import { JsonPipe, UpperCasePipe, LowerCasePipe, CurrencyPipe } from '@angular/common';
 import { AuctionCardComponent } from './auction-card.component';
 import { AuctionsResourceService } from './auctions-resource.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   imports: [JsonPipe, UpperCasePipe, LowerCasePipe, CurrencyPipe, AuctionCardComponent],
@@ -32,15 +33,22 @@ import { AuctionsResourceService } from './auctions-resource.service';
   `,
   styles: ``,
 })
-export class AuctionsPageComponent implements OnInit {
+export class AuctionsPageComponent implements OnInit, OnDestroy {
+ 
   auctions: AuctionItem[] = [];
   isLoading = false;
   errorMessage = '';
+
+  mySub?: Subscription;
 
   private readonly aucionsResourceService = inject(AuctionsResourceService);
 
   ngOnInit(): void {
     this.loadAuctions();
+  }
+
+   ngOnDestroy(): void {
+    this.mySub?.unsubscribe();
   }
 
   loadAuctions() {
@@ -50,7 +58,7 @@ export class AuctionsPageComponent implements OnInit {
     // });
     this.isLoading = true;
     this.errorMessage = '';
-    this.aucionsResourceService.getAll().subscribe({
+    this.mySub = this.aucionsResourceService.getAll().subscribe({
       next: (auctions: AuctionItem[]) => {
         this.auctions = auctions;
         this.isLoading = false;
