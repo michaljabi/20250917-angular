@@ -1,14 +1,18 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { AuctionItem } from './auction-item';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuctionsResourceService {
-  
-  getAll(): AuctionItem[] {
+  private httpClient = inject(HttpClient);
+  private baseEndpoint = `http://localhost:3000/auctions`;
+
+  getAll(): Observable<AuctionItem[]> {
     // GET...
-    return []
+    return this.httpClient.get<AuctionItem[]>(this.baseEndpoint);
   }
 
   addOne(auction: AuctionItem) {
