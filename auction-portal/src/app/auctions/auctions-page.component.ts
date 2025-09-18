@@ -8,8 +8,12 @@ import { JsonPipe, UpperCasePipe, LowerCasePipe, CurrencyPipe } from '@angular/c
     <section>
       <h2>Lista aukcji {{ 200 | currency : 'USD' }}</h2>
 
-      <div>
+      <div class="row">
         {{ auctions | json | uppercase | lowercase }}
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">1</div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">2</div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">3</div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">4</div>
       </div>
     </section>
   `,

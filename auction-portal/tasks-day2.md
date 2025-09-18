@@ -73,3 +73,36 @@ Pomocny link:
 2. dodaj skrypt do uruchamiania serwera API (fikcyjnego) z danymi z pliku `db-data.json`:
 3. plik utwórz od zera (w katalogu głównym projektu) i dodaj do niego dane z zadania `9.`
 4. upewnij się, że serwer działa poprawnie i na adresie `http://localhost:3000/auctions` wyświetla aukcje w formacie `JSON`
+
+## Zadanie 13 - przygotowanie wyświetlania listy aukcji:
+
+1. Do strony `/auctions` dodaj kod:
+```html
+<div class="row">
+  <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+    <!-- TODO: dodaj wyświetlanie aukcji (komponent) -->
+  </div>
+</div>
+```
+2. powtarzanie tego kodu - pozwoli na wyświetlenie auckji
+3. dodaj odpowiedni komponent `auction-card` i dodaj w nim `input()` związany z `interface` do `AuctionItem`
+4. jego template to:
+```html
+<div class="card">
+  <div class="card-header">Tytuł</div>
+  <img class="card-img" src="" alt="" />
+  <div class="card-body">
+    <p class="card-text">Opis aukcji</p>
+    <div class="d-flex justify-content-between align-content-center">
+      <strong> 0 zł</strong>
+      <button class="btn btn-primary">
+        <i class="fa fa-cart-plus"></i>
+      </button>
+    </div>
+  </div>
+</div>
+```
+5. wrzuć sobie przykładową aukcję w tablicę: `auctions` w komponenncie `auctions-page`
+6. spróbuj wyświetlić te aukcje z użyciem `@for`
+7. żeby nie musieć odpakowywać sygnału co chwila na template sprawdź użycie `@let`
+   https://angular.dev/api/core/@let
