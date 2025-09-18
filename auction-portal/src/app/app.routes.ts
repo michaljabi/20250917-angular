@@ -1,10 +1,9 @@
 import { Routes } from '@angular/router';
-import { AuctionsPageComponent } from './auctions/auctions-page.component';
-import { PromotionsPageComponent } from './auctions/promotions-page/promotions-page.component';
 import { advicesRoutes } from './advices/advices.routes';
+import { auctionsRoutes } from './auctions/auctions.routes';
 
 export const routes: Routes = [
-  { path: 'auctions', component: AuctionsPageComponent },
-  { path: 'promotions', component: PromotionsPageComponent },
-  ...advicesRoutes
+  { path: '', pathMatch: 'full', redirectTo: '/auctions' },
+  ...auctionsRoutes,
+  ...advicesRoutes,
 ];
