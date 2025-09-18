@@ -5,3 +5,5 @@ export interface AuctionItem {
   price: number;
   description?: string;
 }
+
+

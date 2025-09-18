@@ -1,19 +1,27 @@
 import { Component } from '@angular/core';
 import { AuctionItem } from './auction-item';
 import { JsonPipe, UpperCasePipe, LowerCasePipe, CurrencyPipe } from '@angular/common';
+import { AuctionCardComponent } from './auction-card.component';
 
 @Component({
-  imports: [JsonPipe, UpperCasePipe, LowerCasePipe, CurrencyPipe],
+  imports: [JsonPipe, UpperCasePipe, LowerCasePipe, CurrencyPipe, AuctionCardComponent],
   template: `
     <section>
-      <h2>Lista aukcji {{ 200 | currency : 'USD' }}</h2>
+      <h2>Lista aukcji</h2>
 
       <div class="row">
-        {{ auctions | json | uppercase | lowercase }}
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">1</div>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">2</div>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">3</div>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">4</div>
+        @for(a of auctions; track a.id) {
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <app-auction-card [auction]="a" />
+        </div>
+        } @empty {
+        <div class="alert alert-info">Nie ma jeszcze aukcji....</div>
+        }
+      </div>
+      <div class="my-4">
+        {{ 200 | currency : 'USD' }}
+        <hr />
+        {{ { name: 'Michał' } | json | uppercase | lowercase }}
       </div>
     </section>
   `,

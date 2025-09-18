@@ -24,6 +24,7 @@ interface Fruit {
     <div class="panel is-info">
       <p class="panel-heading ">Kosz z owocami...</p>
       @for (fruitzz of fruits; track fruitzz.name) {
+        <!-- <app-fruit-card [fruit]="fruitzz" /> -->
         <div class="panel-block">{{ fruitzz.amount }} - {{ fruitzz.name }}</div>
       }
     </div>
