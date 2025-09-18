@@ -17,6 +17,7 @@ import { AuctionsResourceService } from './auctions-resource.service';
         </div>
         } @empty {
         <div class="alert alert-info">Nie ma jeszcze aukcji....</div>
+        <div class="alert alert-danger">{{ errorMessage }}</div>
         }
       </div>
       <div class="my-4">
@@ -30,12 +31,27 @@ import { AuctionsResourceService } from './auctions-resource.service';
 })
 export class AuctionsPageComponent implements OnInit {
   auctions: AuctionItem[] = [];
+  errorMessage = '';
 
   private readonly aucionsResourceService = inject(AuctionsResourceService);
 
   ngOnInit(): void {
-    this.aucionsResourceService.getAll().subscribe((auctions: AuctionItem[]) => {
-      this.auctions = auctions;
+    // Rozwiązanie "poprawne", ale obsługujemy tylko HAPPY PATH !!!!
+    // this.aucionsResourceService.getAll().subscribe((auctions: AuctionItem[]) => {
+    //   this.auctions = auctions;
+    // });
+
+    this.aucionsResourceService.getAll().subscribe({
+      next: (auctions: AuctionItem[]) => {
+        this.auctions = auctions;
+      },
+      error: (err: Error) => {
+        console.error(err);
+        this.errorMessage = err.message;
+      },
+      complete: () => {
+        console.log('Completed !');
+      },
     });
   }
 }
