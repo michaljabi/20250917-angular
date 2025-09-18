@@ -17,9 +17,11 @@ import { SharedModule } from '../shared/shared.module';
   ],
   template: `
     <section>
-      <div class="d-flex justify-content-between">
-        <h2>Lista aukcji</h2>
-        <app-search-bar (search)="handleSearch($event)" />
+      <div class="row">
+        <h2 class="col-12 col-sm-4 col-md-7">Lista aukcji</h2>
+        <div class="col-12 col-sm-8 col-md-5">
+          <app-search-bar (search)="handleSearch($event)" />
+        </div>
       </div>
 
       <div class="row">
