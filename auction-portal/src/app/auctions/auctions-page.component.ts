@@ -4,12 +4,23 @@ import { JsonPipe, UpperCasePipe, LowerCasePipe, CurrencyPipe } from '@angular/c
 import { AuctionCardComponent } from './auction-card.component';
 import { AuctionsResourceService } from './auctions-resource.service';
 import { Subscription } from 'rxjs';
+import { SharedModule } from '../shared/shared.module';
 
 @Component({
-  imports: [JsonPipe, UpperCasePipe, LowerCasePipe, CurrencyPipe, AuctionCardComponent],
+  imports: [
+    JsonPipe,
+    UpperCasePipe,
+    LowerCasePipe,
+    CurrencyPipe,
+    AuctionCardComponent,
+    SharedModule,
+  ],
   template: `
     <section>
-      <h2>Lista aukcji</h2>
+      <div class="d-flex justify-content-between">
+        <h2>Lista aukcji</h2>
+        <app-search-bar (search)="handleSearch($event)" />
+      </div>
 
       <div class="row">
         @for(a of auctions; track a.id) {
@@ -34,7 +45,6 @@ import { Subscription } from 'rxjs';
   styles: ``,
 })
 export class AuctionsPageComponent implements OnInit, OnDestroy {
- 
   auctions: AuctionItem[] = [];
   isLoading = false;
   errorMessage = '';
@@ -47,8 +57,12 @@ export class AuctionsPageComponent implements OnInit, OnDestroy {
     this.loadAuctions();
   }
 
-   ngOnDestroy(): void {
+  ngOnDestroy(): void {
     this.mySub?.unsubscribe();
+  }
+
+  handleSearch(value: string) {
+    console.log(value);
   }
 
   loadAuctions() {

@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'old-app-search',
@@ -9,13 +9,13 @@ import {Component, EventEmitter, Output} from '@angular/core';
       <input class="input" type="text" (input)="handleInput($event)" />
     </div>
   `,
-  styles: ``
+  styles: ``,
 })
 export class SearchComponent {
   @Output() search = new EventEmitter<string>();
 
   handleInput(ev: Event) {
-    if(ev.target) {
+    if (ev.target) {
       const input = ev.target as HTMLInputElement;
       const value = input.value.trim();
       this.search.emit(value);

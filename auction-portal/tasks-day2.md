@@ -127,3 +127,11 @@ Pomocny link:
  <div class="alert alert-info">Ładowanie aukcji....</div>
  <div class="alert alert-danger">{{ errorMessage }}</div>
  ```
+
+## Zadanie 16:
+1. użyj komponentów z modułu `shared` 
+2. np.  `SearchBarComponent`  i sprawdź czy działa poprawnie
+3. osadź na komponencie [auction-card](./src/app/auctions/auction-card.component.ts)  ikonę jako:
+```html
+ <fa-icon icon="cart-plus"/> 
+```
