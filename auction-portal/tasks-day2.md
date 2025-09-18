@@ -106,3 +106,11 @@ Pomocny link:
 6. spróbuj wyświetlić te aukcje z użyciem `@for`
 7. żeby nie musieć odpakowywać sygnału co chwila na template sprawdź użycie `@let`
    https://angular.dev/api/core/@let
+
+
+## Zadanie 14 - service odbioru danych:
+
+1. wygeneruj komendą `ng generate service` nowy serwis, nazwij go `auctions-resource` i umieść w `/app/auctions` (sprawdź `--dry-run` zastosuj `--flat`)
+2. przygotuj dedykowane metody: `getAll` oraz `addOne` - na razie bez implementacji
+3. Mają one zwracać `AuctionItem[]` oraz dodawać jedną `AuctionItem`
+   - docelowo zastosujemy tam `httpClient` ale teraz - możesz zrobić "wydmuszki" tych metod i przygotować ich kształt
