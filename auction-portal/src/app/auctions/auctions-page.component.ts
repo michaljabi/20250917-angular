@@ -58,7 +58,7 @@ export class AuctionsPageComponent implements OnInit, OnDestroy {
     // });
     this.isLoading = true;
     this.errorMessage = '';
-    this.mySub = this.aucionsResourceService.getAll().subscribe({
+    this.mySub = this.aucionsResourceService.fakeGetAllToTest().subscribe({
       next: (auctions: AuctionItem[]) => {
         this.auctions = auctions;
         this.isLoading = false;
