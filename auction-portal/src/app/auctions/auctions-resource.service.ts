@@ -21,7 +21,7 @@ export class AuctionsResourceService {
       );
   }
 
-  addOne(auction: AuctionItem) {
+  addOne(auction: Omit<AuctionItem, 'id'>) {
     // POST...
     return this.httpClient.post<AuctionItem>(this.baseEndpoint, auction);
   }

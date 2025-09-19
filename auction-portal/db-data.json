@@ -32,6 +32,13 @@
       "title": "fonik",
       "imgUrl": "https://picsum.photos/id/3/600/600",
       "price": 2000
+    },
+    {
+      "id": "cb11",
+      "imgUrl": "https://picsum.photos/id/10/600/600",
+      "price": 100,
+      "title": "Widokówka",
+      "description": "test"
     }
   ]
 }

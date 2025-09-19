@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { SharedModule } from '../../shared/shared.module';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AuctionsResourceService } from '../auctions-resource.service';
 
 @Component({
   imports: [SharedModule, ReactiveFormsModule],
@@ -78,7 +79,11 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
             </div>
           </div>
           <div class="text-right">
-            <button class="btn btn-primary" type="submit">
+            <button
+              class="btn btn-primary"
+              type="submit"
+              [style]="{ opacity: this.auctionForm.invalid ? '.5' : '1' }"
+            >
               <fa-icon icon="gavel"></fa-icon> Dodaj aukcję
             </button>
           </div>
@@ -98,6 +103,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 export class AddAuctionPageComponent {
   // Reactive Driven Form:
   private fb = inject(FormBuilder);
+  private auctionsResurceService = inject(AuctionsResourceService);
 
   auctionForm = this.fb.group({
     title: ['', Validators.required],
@@ -114,8 +120,28 @@ export class AddAuctionPageComponent {
 
   handleAuctionSubmit() {
     if (this.auctionForm.invalid) {
-      console.log('To do....');
+      // console.log('To do....');
+      return this.auctionForm.markAllAsTouched();
     }
     console.log('Aktaulna wartość form', this.auctionForm.value);
+
+    // const { price = 0, title = '', description } = this.auctionForm.value;
+
+    this.auctionsResurceService
+      .addOne({
+        imgUrl: this.imgSrc,
+        price: this.auctionForm.value.price || 0,
+        title: this.auctionForm.value.title || '',
+        description: this.auctionForm.value.description || undefined,
+      })
+      .subscribe({
+        next: (auction) => {
+          console.log('Auciton from server', auction);
+          this.auctionForm.reset({ imgId: 10 });
+        },
+        error: (e) => {
+          console.error(e);
+        },
+      });
   }
 }
