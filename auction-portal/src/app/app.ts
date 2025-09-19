@@ -2,10 +2,11 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './common/header/header.component';
 import { MainMenuComponent } from "./common/main-menu/main-menu.component";
+import { CartItemsCountComponent } from "./auctions/cart/cart-items-count/cart-items-count.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, MainMenuComponent],
+  imports: [RouterOutlet, HeaderComponent, MainMenuComponent, CartItemsCountComponent],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
