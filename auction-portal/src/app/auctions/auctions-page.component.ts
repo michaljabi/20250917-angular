@@ -17,13 +17,8 @@ import { CartService } from './cart/cart.service';
     SharedModule,
   ],
   template: `
-    <section>
-      <div class="row">
-        <h2 class="col-12 col-sm-4 col-md-7">Lista aukcji</h2>
-        <div class="col-12 col-sm-8 col-md-5">
-          <app-search-bar (search)="handleSearch($event)" />
-        </div>
-      </div>
+    <app-page-layout pageTitle="Lista aukcji">
+      <app-search-bar rightSide (search)="handleSearch($event)" />
 
       <div class="row">
         @for(a of auctions; track a.id) {
@@ -43,7 +38,7 @@ import { CartService } from './cart/cart.service';
         <hr />
         {{ { name: 'Michał' } | json | uppercase | lowercase }}
       </div>
-    </section>
+    </app-page-layout>
   `,
   styles: ``,
 })

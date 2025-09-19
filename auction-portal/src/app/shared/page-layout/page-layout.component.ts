@@ -5,8 +5,13 @@ import { Component, input } from '@angular/core';
   standalone: false,
   template: `
     <section>
-      <div>
-        <h2>{{ pageTitle() }}</h2>
+      <div class="row">
+        <h2 class="col-12" [ngClass]="{ 'col-sm-4 col-md-7': myDiv.innerHTML.length }">
+          {{ pageTitle() }}
+        </h2>
+        <div class="col-12 col-sm-8 col-md-5" #myDiv>
+          <ng-content select="[rightSide]" />
+        </div>
       </div>
       <ng-content />
     </section>
