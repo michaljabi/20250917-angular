@@ -16,11 +16,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { NotificationComponent } from './notification/notification.component';
 import { FormsModule } from '@angular/forms';
+import { PageLayoutComponent } from './page-layout/page-layout.component';
 
 @NgModule({
-  declarations: [SearchBarComponent, NotificationComponent],
+  declarations: [SearchBarComponent, NotificationComponent, PageLayoutComponent],
   imports: [CommonModule, FontAwesomeModule, FormsModule],
-  exports: [FontAwesomeModule, SearchBarComponent, NotificationComponent],
+  exports: [FontAwesomeModule, SearchBarComponent, NotificationComponent, PageLayoutComponent],
 })
 export class SharedModule {
   constructor(library: FaIconLibrary) {

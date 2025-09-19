@@ -1,14 +1,11 @@
 import { Component } from '@angular/core';
+import { SharedModule } from '../shared/shared.module';
 
 @Component({
-  imports: [],
+  imports: [SharedModule],
   template: `
-    <p>
-      advices-page works!
-    </p>
+    <app-page-layout pageTitle="Podpowiadamy co wybrać !"> CONTENT AWAITING... </app-page-layout>
   `,
-  styles: ``
+  styles: ``,
 })
-export class AdvicesPageComponent {
-
-}
+export class AdvicesPageComponent {}

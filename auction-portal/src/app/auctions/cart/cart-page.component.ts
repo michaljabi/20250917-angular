@@ -2,16 +2,14 @@ import { Component, inject } from '@angular/core';
 import { CartService } from './cart.service';
 import { JsonPipe } from '@angular/common';
 import { CartItem } from './cart-item';
+import { SharedModule } from '../../shared/shared.module';
 
 @Component({
-  imports: [JsonPipe],
+  imports: [JsonPipe, SharedModule],
   template: `
-    <section>
-      <h2>Koszyk</h2>
-      <div>
-        {{ cartService.getAll() | json }}
-      </div>
-    </section>
+    <app-page-layout pageTitle="Twój koszyk">
+      {{ cartService.getAll() | json }}
+    </app-page-layout>
   `,
   styles: ``,
 })
