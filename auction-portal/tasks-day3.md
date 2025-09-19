@@ -47,3 +47,11 @@
 8. Zadbaj o to, żeby zamiast ilości pokazywać "Koszyk jest pusty" jeśli `count === 0`.
 9. Do `auctions-card.component` też wczep `DI` koszyk i połącz z dodawaniem do koszyka
 10. Do `cart-page.component` też wczep `DI` koszyk i pokazuj za pomocą `|json` pipe elementy w koszyku
+
+## Zadanie 19 `auction-card.component` should be DUMMY!
+
+1. Usuń `DI` serwisu `cart.service` z komponentu `auction-card.component`
+2. Chcemy "ogłupić" komponent `auction-card` tak aby nie wiedział do kogo wysłać info o dodaniu do koszyka
+3. Zamiast `DI` tutaj do `cart.service` przesuń `DI` wyżej do `auctions-page.component` a tutaj wyślij `output` `event` odpowiedni z aukcją
+4. Wtedy - komponent rodzica będzie wiedział do jakiego serwisu wrzucić aukcje a `auction-card` nie ma pojęcia, kto dostarcza `input` z aukcją i kto odbiera aukcje
+5. wymyśl odpowiednią nazwę event'u

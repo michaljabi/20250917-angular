@@ -5,6 +5,7 @@ import { AuctionCardComponent } from './auction-card.component';
 import { AuctionsResourceService } from './auctions-resource.service';
 import { Subscription } from 'rxjs';
 import { SharedModule } from '../shared/shared.module';
+import { CartService } from './cart/cart.service';
 
 @Component({
   imports: [
@@ -27,7 +28,7 @@ import { SharedModule } from '../shared/shared.module';
       <div class="row">
         @for(a of auctions; track a.id) {
         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-          <app-auction-card [auction]="a" />
+          <app-auction-card [auction]="a" (addToCart)="cartService.addItem($event)" />
         </div>
         } @empty { @if(isLoading) {
         <div class="alert alert-info">Ładowanie....</div>
@@ -52,6 +53,7 @@ export class AuctionsPageComponent implements OnInit, OnDestroy {
   errorMessage = '';
 
   mySub?: Subscription;
+  cartService = inject(CartService);
 
   private readonly aucionsResourceService = inject(AuctionsResourceService);
 

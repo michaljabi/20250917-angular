@@ -3,7 +3,7 @@ import { CartItem } from './cart-item';
 import { AuctionItem } from '../auction-item';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root', // potrzebne żeby DI działało!
 })
 export class CartService {
   // Statefull service
@@ -11,7 +11,7 @@ export class CartService {
   // żeby działało bez zone.js musimy:
   // 1. albo przepisać na signals ! (signal)
   // 2. albo przepisać na Observables ! (rxjs)
-   
+
   private cartItems: CartItem[] = [];
 
   addItem(auction: AuctionItem) {
