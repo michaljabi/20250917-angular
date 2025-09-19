@@ -8,6 +8,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class AuctionsResourceService {
+  // Stateless service
   private httpClient = inject(HttpClient);
   private baseEndpoint = `${environment.baseURL}/auctions`;
 

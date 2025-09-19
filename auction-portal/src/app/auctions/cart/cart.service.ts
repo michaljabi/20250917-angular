@@ -6,6 +6,12 @@ import { AuctionItem } from '../auction-item';
   providedIn: 'root',
 })
 export class CartService {
+  // Statefull service
+
+  // żeby działało bez zone.js musimy:
+  // 1. albo przepisać na signals ! (signal)
+  // 2. albo przepisać na Observables ! (rxjs)
+   
   private cartItems: CartItem[] = [];
 
   addItem(auction: AuctionItem) {
@@ -21,7 +27,7 @@ export class CartService {
     }
   }
 
-  getAll(): CartItem[] {
+  getAll(): readonly CartItem[] {
     return this.cartItems;
   }
 
