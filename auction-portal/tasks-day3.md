@@ -24,3 +24,26 @@
 
 3. Dodaj brakujące strony `add-auction-page` oraz `cart-page` do routingu.
 4. Potwierdź, że działają prawidłowo po kliknięciu na przyciski powyżej (dodaj / koszyk)
+
+## Zadanie 18 "Mechanizm koszyka"
+
+1. Przygotuj nowy serwis: `cart`
+2. Przechowuj w nim wszystkie elementy w koszyku
+3. Wymyśl `interface` dla elementu w koszyku
+4. Dodaj metody do:
+
+- dodawania aukcji do koszyka
+- pobierania listy wszystkich elementów w koszyku
+- pobierania ilości wszystkich aukcji w koszyku
+
+5. Wyświetlaj ilość aukcji w koszyku za pomocą nowego komponentu, jego HTML może wyglądać tak:
+
+```html
+<app-notification> Masz już {{0}} aukcji w koszyku </app-notification>
+```
+
+6. Podczep `service` z koszykiem za pomocą `DI` do tego komponentu i pokazuj właściwą ilość elementów
+7. Podczep ten `service` również do `auction-card` i uruchamiaj zdarzenie dodawania aukcji do koszyka
+8. Zadbaj o to, żeby zamiast ilości pokazywać "Koszyk jest pusty" jeśli `count === 0`.
+9. Do `auctions-card.component` też wczep `DI` koszyk i połącz z dodawaniem do koszyka
+10. Do `cart-page.component` też wczep `DI` koszyk i pokazuj za pomocą `|json` pipe elementy w koszyku
