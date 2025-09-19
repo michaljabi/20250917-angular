@@ -55,3 +55,29 @@
 3. Zamiast `DI` tutaj do `cart.service` przesuń `DI` wyżej do `auctions-page.component` a tutaj wyślij `output` `event` odpowiedni z aukcją
 4. Wtedy - komponent rodzica będzie wiedział do jakiego serwisu wrzucić aukcje a `auction-card` nie ma pojęcia, kto dostarcza `input` z aukcją i kto odbiera aukcje
 5. wymyśl odpowiednią nazwę event'u
+
+
+## Zadanie 20 - shared `page-layout.component`
+
+1. W module `shared` wygeneruj nowy komponent `page-layout`, jednak użyj następujących flag:
+2. `ng g c shared/page-layout --standalone=false --export --dry-run`
+3. Tak możesz puścić komendę w głównym katalogu projektu, zrozumie on że chodzi o moduł `shared`
+4. `--standalone=false` spowoduje, że komponent zostanie przygotowany zgodnie z założeniami `shared`, będzie tam deklarowany
+5. `--export` spowoduje, że odrazu zostanie on dodany do tablicy `exports: []` w module i można będzie `page-layout` używać w całej aplikacji
+6. W odpowiednim momencie usuń flagę `--dry-run` i dodaj następujący kod komponentu:
+
+```html
+<section>
+  <div>
+    <h2>{{ pageTitle() }}</h2>
+  </div>
+  <ng-content />
+</section>
+```
+
+7. gdzie `pageTitle()` to `input()` signal, który można podać jako `pageTitle=''` z komponentu `parent`
+8. Osadź `app-page-layout` na `/promotions` , `/advices`, `/add-auction` oraz `/cart`
+9. Zobacz jak działa `ng-content` na podstawie komponentu `app-notification` i przygotuj przykładowy kod, oraz ustal `pageTitle` dla każdej storny np. `Aukcje na promocji`, `Podpowiadamy co wybrać !`, `Twój koszyk`, `Nowa aukcja`
+
+https://angular.dev/guide/templates/control-flow
+https://angular.dev/guide/templates/ng-content
