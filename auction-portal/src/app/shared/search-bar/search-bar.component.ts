@@ -5,12 +5,13 @@ import { Component, output } from '@angular/core';
   standalone: false,
   template: `
     <div class="input-group mb-3 w-100">
-      <div class="input-group-prepend">
+      <div class="input-group-prepend" (click)="myInput.focus()">
         <span class="input-group-text">
           <fa-icon icon="search" />
         </span>
       </div>
       <input
+        #myInput
         type="text"
         name="title"
         class="form-control"
