@@ -1,10 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MenuItem } from './MenuItem';
 import { RouterLink } from '@angular/router';
+import { SharedModule } from '../../shared/shared.module';
 
 @Component({
   selector: 'app-main-menu',
-  imports: [RouterLink],
+  imports: [RouterLink, SharedModule],
   template: `
     <nav class="navbar navbar-expand-lg navbar-light bg-light px-3 mb-3">
       <button class="navbar-toggler" type="button" (click)="isMenuShown = !isMenuShown">
@@ -18,6 +19,14 @@ import { RouterLink } from '@angular/router';
           </li>
           } @empty { no items 😭 }
         </ul>
+      </div>
+      <div class="text-light d-flex gap-2">
+        <a class="btn btn-outline-primary" routerLink="/add-auction">
+          <fa-icon icon="plus" /> Dodaj
+        </a>
+        <a class="btn btn-outline-secondary" routerLink="/cart">
+          <fa-icon icon="shopping-basket" /> Koszyk
+        </a>
       </div>
     </nav>
   `,
