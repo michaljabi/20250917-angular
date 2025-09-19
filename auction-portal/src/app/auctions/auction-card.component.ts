@@ -13,7 +13,7 @@ import { SharedModule } from '../shared/shared.module';
       <div class="card-body">
         <p class="card-text">{{ a.description }}</p>
         <div class="d-flex justify-content-between align-content-center">
-          <strong> {{ a.title }} zł</strong>
+          <strong> {{ a.price }} zł</strong>
           <button class="btn btn-primary">
             <fa-icon icon="cart-plus" />
           </button>
