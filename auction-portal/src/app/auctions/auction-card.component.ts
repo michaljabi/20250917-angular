@@ -1,6 +1,7 @@
-import { Component, input, InputSignal } from '@angular/core';
+import { Component, inject, input, InputSignal } from '@angular/core';
 import { AuctionItem } from './auction-item';
 import { SharedModule } from '../shared/shared.module';
+import { CartService } from './cart/cart.service';
 
 @Component({
   selector: 'app-auction-card',
@@ -14,7 +15,7 @@ import { SharedModule } from '../shared/shared.module';
         <p class="card-text">{{ a.description }}</p>
         <div class="d-flex justify-content-between align-content-center">
           <strong> {{ a.price }} zł</strong>
-          <button class="btn btn-primary">
+          <button class="btn btn-primary" (click)="cartService.addItem(a)">
             <fa-icon icon="cart-plus" />
           </button>
         </div>
@@ -26,7 +27,11 @@ import { SharedModule } from '../shared/shared.module';
 export class AuctionCardComponent {
   // auction: InputSignal<AuctionItem> = input.required<AuctionItem>();
   auction = input.required<AuctionItem>();
-
+  cartService = inject(CartService);
   //a: string = 'a';
   // two = 2;
+
+  handleAddToCartClick(auction: AuctionItem) {
+    this.cartService.addItem(auction);
+  }
 }
